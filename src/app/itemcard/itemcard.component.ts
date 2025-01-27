@@ -6,9 +6,11 @@ import { CommonModule } from '@angular/common';
   selector: 'app-itemcard',
   imports: [CommonModule],
   templateUrl: './itemcard.component.html',
-  styleUrl: './itemcard.component.scss',
+  styleUrls: ['./itemcard.component.scss'],
 })
 export class ItemcardComponent {
+  // @Input() customClass: string = '';
+  @Input() customStyle: { [key: string]: string } = {}; // to accepte customStyle from the parent component(alimentation) for inline styles
   @Input() item: any; //Input property to accept item data
   @Input() index!: number; //Input property for item index
 

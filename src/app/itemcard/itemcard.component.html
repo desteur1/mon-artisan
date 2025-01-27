@@ -1,8 +1,10 @@
-<div class="card item-card" style="width: 18rem">
+<div class="card item-card">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Nom : {{ item.nom }}</li>
+    <li class="list-group-item" [ngStyle]="customStyle">
+      Nom : {{ item.nom }}
+    </li>
     <!-- Display full stars -->
-    <li class="list-group-item">
+    <li class="list-group-item" [ngStyle]="customStyle">
       Note :
       <ng-container *ngFor="let star of getFullStars(item.note)">
         <i class="bi bi-star-fill text-warning"></i>
@@ -14,7 +16,13 @@
       </ng-container>
     </li>
 
-    <li class="list-group-item">Spécialité : {{ item.specialite }}</li>
-    <li class="list-group-item">Localisation : {{ item.localisation }}</li>
+    <li class="list-group-item" [ngStyle]="customStyle">
+      Spécialité : {{ item.specialite }}
+    </li>
+    <li class="list-group-item" [ngStyle]="customStyle">
+      Localisation : {{ item.localisation }}
+    </li>
   </ul>
 </div>
+
+<!--[ngStyle]="customStyle is been bind from the ts -->

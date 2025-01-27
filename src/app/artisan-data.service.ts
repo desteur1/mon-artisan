@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Artisan } from './models/artisan.model'; // interface
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArtisanDataService {
-  private items = [
+  private items: Artisan[] = [
     // Batiment
     {
       nom: 'Bernard',
