@@ -1,0 +1,20 @@
+<div class="card item-card" style="width: 18rem">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Nom : {{ item.nom }}</li>
+    <!-- Display full stars -->
+    <li class="list-group-item">
+      Note :
+      <ng-container *ngFor="let star of getFullStars(item.note)">
+        <i class="bi bi-star-fill text-warning"></i>
+      </ng-container>
+
+      <!-- Display half star if applicable -->
+      <ng-container *ngIf="hasHalfStar(item.note)">
+        <i class="bi bi-star-half text-warning"></i>
+      </ng-container>
+    </li>
+
+    <li class="list-group-item">Spécialité : {{ item.specialite }}</li>
+    <li class="list-group-item">Localisation : {{ item.localisation }}</li>
+  </ul>
+</div>

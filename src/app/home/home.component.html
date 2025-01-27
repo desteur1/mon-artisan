@@ -64,53 +64,12 @@
   <section
     class="main-item-3 d-flex flex-wrap justify-content-center gap-3 mb-4 pb-4"
   >
-    <div class="card item-card" style="width: 18rem">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Nom :</li>
-        <li class="list-group-item">
-          Note :
-          <!--bootstrap icons-->
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-half text-warning ms-2"></i>
-        </li>
-        <li class="list-group-item">Spécialité :</li>
-        <li class="list-group-item">Localisation :</li>
-      </ul>
-    </div>
-    <div class="card item-card" style="width: 18rem">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Nom :</li>
-        <li class="list-group-item">
-          Note :
-          <!--bootstrap icons-->
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-        </li>
-        <li class="list-group-item">Spécialité :</li>
-        <li class="list-group-item">Localisation :</li>
-      </ul>
-    </div>
-    <div class="card item-card" style="width: 18rem">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Nom :</li>
-        <li class="list-group-item">
-          Note :
-          <!--bootstrap icons-->
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-          <i class="bi bi-star-fill text-warning ms-2"></i>
-        </li>
-        <li class="list-group-item">Spécialité :</li>
-        <li class="list-group-item">Localisation :</li>
-      </ul>
+    <div
+      *ngFor="let artisan of employeeOfTheMonth; let i = index"
+      class="card item-card"
+      style="width: 18rem"
+    >
+      <app-itemcard [item]="artisan" [index]="i"></app-itemcard>
     </div>
   </section>
 </main>
