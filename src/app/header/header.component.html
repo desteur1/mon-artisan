@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light mx-4">
   <!-- navbar-expand-md  makes the menu berger only be display on small screen-->
   <div class="container-fluid">
-    <a class="navbar-brand w-50" href="#"
+    <a class="navbar-brand w-50" routerLink="/"
       ><img src="/images/logo.png" class="logo-item" alt="logo artisan"
     /></a>
     <div class="toggle-form">
@@ -46,12 +46,15 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0 w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/alimentation"
               >Alimentation</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Bâtiment</a>
+            <a class="nav-link active" routerLink="/batiment">Bâtiment</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="#">Fabrication</a>

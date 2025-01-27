@@ -65,11 +65,11 @@
     class="main-item-3 d-flex flex-wrap justify-content-center gap-3 mb-4 pb-4"
   >
     <div
-      *ngFor="let artisan of employeeOfTheMonth; let i = index"
+      *ngFor="let artisan of employeeOfTheMonth"
       class="card item-card"
       style="width: 18rem"
     >
-      <app-itemcard [item]="artisan" [index]="i"></app-itemcard>
+      <app-itemcard [item]="artisan"></app-itemcard>
     </div>
   </section>
 </main>
