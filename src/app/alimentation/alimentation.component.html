@@ -4,11 +4,12 @@
     <div class="container-fluid overflow-hidden p-0 ml-2">
       <div class="row g-5">
         <div
-          *ngFor="let artisan of alimentationItems"
+          *ngFor="let artisan of alimentationItems; let i = index"
           class="col-12 col-sm-6 col-md-6 item-card"
         >
           <app-itemcard
             [item]="artisan"
+            [index]="i"
             [customStyle]="{
               'background-color': '#0074c7',
               border: 'none',

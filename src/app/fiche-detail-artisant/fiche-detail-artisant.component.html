@@ -1,0 +1,97 @@
+<!-- Check if 'item' exists before rendering the details section -->
+<section *ngIf="item" class="mx-4">
+  <h1 class="text-center my-4">Details for {{ item.nom }}</h1>
+  <!-- Display the artisan's details using the Itemcard component -->
+  <app-itemcard
+    [item]="item"
+    [index]="index !== undefined ? index : -1"
+    [customStyle]="{
+      'background-color': '#0074c7',
+      border: 'none',
+      color: '#f1f8fc'
+    }"
+  ></app-itemcard>
+  <div>
+    <h2 class="text-center my-4">A propos</h2>
+    <!-- Display 'aboutMe' text if available; otherwise, show fallback text -->
+    <p *ngIf="item.aboutMe; else noAboutMe" class="text-center">
+      {{ item.aboutMe }}
+    </p>
+    <!-- Fallback template if 'aboutMe' is empty or undefined -->
+    <ng-template #noAboutMe>
+      <p class="text-center">Aucune description disponible.</p>
+    </ng-template>
+  </div>
+  <div class="mt-4">
+    <h3 class="text-center">Formulaire de Contact</h3>
+    <!--Form submission triggers 'onSubmit()' method-->
+    <!--ngForm makes it easy to track form state (valid, invalid, touched, dirty, etc.).-->
+    <!--ngSubmit → Calls a function when the form is submitted-->
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+      <!--Name Field-->
+      <div class="form-group">
+        <label for="name" class="form-label">Nom :</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="contact.name"
+          required
+        />
+        <div *ngIf="contactForm.submitted && !contact.name" class="text-danger">
+          Nom est requis.
+        </div>
+      </div>
+
+      <!-- Subject Field-->
+      <div class="form-group">
+        <label for="subject" class="form-label">Objet :</label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          [(ngModel)]="contact.subject"
+          required
+        />
+        <div
+          *ngIf="contactForm.submitted && !contact.subject"
+          class="text-danger"
+        >
+          Objet est requis.
+        </div>
+      </div>
+
+      <!-- Message field-->
+      <div class="form-group">
+        <label for="message" class="form-label">message :</label>
+        <textarea
+          name="message"
+          id="message"
+          [(ngModel)]="contact.message"
+          rows="8"
+          required
+        ></textarea>
+        <div
+          *ngIf="contactForm.submitted && !contact.message"
+          class="text-danger"
+        >
+          Message est requis.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success">Envoyer</button>
+    </form>
+  </div>
+  <!-- Button to navigate back to the main page -->
+  <button (click)="goBack()" class="btn btn-primary my-4 btn-return">
+    Retour
+  </button>
+</section>
+
+<!-- A fallback text is a default message that appears when the expected content is missing, empty, or unavailable.-->
+
+<!--[item]="item" : Pass the selected artisan item -->
+
+<!-- [index]="-1" : Set index to -1 since it's only for display (not a list) -->
+
+<!-- [index]="index !== undefined ? index : -1" Fallback to -1 if index is undefined -->

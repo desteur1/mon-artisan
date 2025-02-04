@@ -11,7 +11,7 @@ import { ItemcardComponent } from '../itemcard/itemcard.component';
   styleUrl: './alimentation.component.scss',
 })
 export class AlimentationComponent {
-  title = signal('Artisans Fabrication'); // signal() is the new method of binding data
+  title = signal('Artisans Alimentaion'); // signal() is the new method of binding data
   alimentationItems: Artisan[] = []; // property to hold the fetch items
 
   constructor(private artisanDataService: ArtisanDataService) {}
@@ -21,5 +21,6 @@ export class AlimentationComponent {
 
     this.alimentationItems =
       this.artisanDataService.getItemByDepartment('Alimentation');
+    console.log('Fetched Fabrication Items:', this.alimentationItems);
   }
 }

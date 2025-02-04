@@ -5,4 +5,5 @@ export interface Artisan {
   specialite: string;
   localisation: string;
   department: string;
+  aboutMe: string;
 }

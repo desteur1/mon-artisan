@@ -1,0 +1,30 @@
+form {
+  width: 90%;
+  max-width: 600px;
+  // padding-top: 100px;
+  border: none;
+  margin: auto;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  outline: 0;
+  //   color: #fff;
+  border: 1px solid #0b0b0b;
+  //   background: transparent;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+label {
+  height: 100%;
+  cursor: text;
+}
+.btn-return {
+  // position the button to the right
+  margin-left: auto;
+  display: block;
+}
