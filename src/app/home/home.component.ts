@@ -19,6 +19,7 @@ export class HomeComponent {
   ngOnInit(): void {
     // Get all artisans from the service
     const items = this.ArtisanDataService.getItems();
+    console.log('Artisans fetched:', items); // Debug fetched data
 
     // Sort by note (highest first) and select the top 3
     this.employeeOfTheMonth = items

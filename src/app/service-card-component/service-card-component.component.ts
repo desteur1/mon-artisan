@@ -12,14 +12,19 @@ import { ItemcardComponent } from '../itemcard/itemcard.component';
 })
 export class ServiceCardComponentComponent {
   title = signal('Artisans Service'); // signal() is the new method of binding data
-  alimentationItems: Artisan[] = []; // property to hold the fetch items
+  serviceItems: Artisan[] = []; // property to hold the fetch items
 
   constructor(private artisanDataService: ArtisanDataService) {}
 
   ngOnInit() {
     //fetch items for the service department
 
-    this.alimentationItems =
-      this.artisanDataService.getItemByDepartment('Service');
+    this.serviceItems = this.artisanDataService.getItemByDepartment('Service');
+    console.log('Fetched Fabrication Items:', this.serviceItems);
+    if (this.serviceItems.length > 0) {
+      console.log('✅ serviceItems is populated');
+    } else {
+      console.warn('⚠️ No service items found!');
+    }
   }
 }

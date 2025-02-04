@@ -8,18 +8,19 @@ import { ItemcardComponent } from '../itemcard/itemcard.component';
   selector: 'app-fabrication',
   imports: [CommonModule, ItemcardComponent],
   templateUrl: './fabrication.component.html',
-  styleUrl: './fabrication.component.scss',
+  styleUrls: ['./fabrication.component.scss'],
 })
 export class FabricationComponent {
   title = signal('Artisans Fabrication'); // signal() is the new method of binding data
-  alimentationItems: Artisan[] = []; // property to hold the fetch items
+  fabricationItems: Artisan[] = []; // property to hold the fetch items
 
   constructor(private artisanDataService: ArtisanDataService) {}
 
   ngOnInit() {
     //fetch items for the fabrication department
 
-    this.alimentationItems =
+    this.fabricationItems =
       this.artisanDataService.getItemByDepartment('Fabrication');
+    console.log('Fetched Fabrication Items:', this.fabricationItems); // Debug log to check fetched items
   }
 }

@@ -12,14 +12,15 @@ import { ArtisanDataService } from '../artisan-data.service';
 })
 export class BatimentComponent {
   title = signal('Artisans Bâtiment'); // signal() is the new method of binding data
-  alimentationItems: Artisan[] = []; // property to hold the fetch items
+  batimentItems: Artisan[] = []; // property to hold the fetch items
 
   constructor(private artisanDataService: ArtisanDataService) {}
 
   ngOnInit() {
     //fetch items for the batiment department
 
-    this.alimentationItems =
+    this.batimentItems =
       this.artisanDataService.getItemByDepartment('Batiment');
+    console.log('Fetched Fabrication Items:', this.batimentItems);
   }
 }
