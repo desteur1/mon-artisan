@@ -1,14 +1,18 @@
 <main>
   <section class="pt-4">
-    <form class="d-flex flex-column flex-md-row align-items-center gap-2">
+    <form
+      class="d-flex flex-column flex-md-row align-items-center gap-2"
+      (submit)="onSearchClick(); $event.preventDefault()"
+    >
       <input
+        [(ngModel)]="searchInput"
         class="main-input-field form-control"
         type="text"
-        type="search"
         placeholder="Recherche"
         aria-label="search"
+        name="searchTerm"
       />
-      <button class="btn-img">
+      <button class="btn-img" type="submit" (click)="onSearchClick()">
         <img
           src="/images/search-blue.png"
           alt="search icon"
@@ -60,16 +64,17 @@
       </div>
     </div>
   </section>
+
   <h2 class="section-title text-center my-5">Employer du mois</h2>
   <section
     class="main-item-3 d-flex flex-wrap justify-content-center gap-3 mb-4 pb-4"
   >
     <div
-      *ngFor="let artisan of employeeOfTheMonth; let i = index"
+      *ngFor="let artisan of employeeOfTheMonth"
       class="card item-card"
       style="width: 18rem"
     >
-      <app-itemcard [item]="artisan" [index]="i"></app-itemcard>
+      <app-itemcard [item]="artisan"></app-itemcard>
     </div>
   </section>
 </main>

@@ -1,0 +1,33 @@
+<main class="mb-5">
+  <h1 class="text-center my-5">Search Results for "{{ searchTerm }}"</h1>
+  <!-- Return Button -->
+  <div class="text-center mb-4">
+    <button class="btn btn-primary" (click)="goBack()">
+      Return to Previous Page
+    </button>
+  </div>
+
+  <div class="image-container" *ngIf="searchResults.length === 0">
+    <img
+      src="/images/number-four.png"
+      alt="No results found"
+      class="no-results-image"
+    />
+    <div class="no-results-message">
+      <p>No artisans found for your search!</p>
+    </div>
+  </div>
+
+  <section
+    *ngIf="searchResults.length > 0"
+    class="main-item-3 d-flex flex-wrap justify-content-center gap-3 my-4 pb-4"
+  >
+    <div
+      *ngFor="let artisan of searchResults"
+      class="card item-card"
+      style="width: 18rem"
+    >
+      <app-itemcard [item]="artisan"></app-itemcard>
+    </div>
+  </section>
+</main>
