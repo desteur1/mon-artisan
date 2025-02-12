@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Artisan } from './models/artisan.model'; // interface
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', // Makes the service available throughout the app
 })
 export class ArtisanDataService {
   private items: Artisan[] = [
-    // Batiment
+    // Batiment category
     {
       nom: 'Bernard',
       note: 4.5,
@@ -44,7 +45,7 @@ export class ArtisanDataService {
         'Maçon passionné, je réalise des constructions en pierre et en béton.',
     },
 
-    // Service
+    // Service category
     {
       nom: 'Michel',
       note: 4.4,
@@ -81,7 +82,7 @@ export class ArtisanDataService {
         'Je confectionne des vêtements sur mesure et effectue des retouches.',
     },
 
-    // Alimentation
+    // Alimentation category
     {
       nom: 'Petit',
       note: 3.8,
@@ -119,7 +120,7 @@ export class ArtisanDataService {
         'Chef cuisinier, je mets en avant les saveurs méditerranéennes avec des produits frais.',
     },
 
-    // Fabrication
+    // Fabrication category
     {
       nom: 'Robert',
       note: 4.2,
@@ -157,12 +158,31 @@ export class ArtisanDataService {
         'Mécanicien passionné, je répare et optimise toutes sortes de machines.',
     },
   ];
+  // BehaviorSubject to store the search term (used for reactive search functionality)
+  private searchTerm = new BehaviorSubject<string>(''); // Stores search input
+  searchTerm$ = this.searchTerm.asObservable(); // Expose as observable
 
-  // Fetch all items
+  /**
+   * Fetches all artisan items.
+   * @returns Array of all artisans
+   */
   getItems() {
     return this.items;
   }
+
+  /**
+   * Updates the search term for filtering artisans.
+   * @param term - The search term entered by the user
+   */
+  updateSearchTerm(term: string): void {
+    this.searchTerm.next(term); // Updates the BehaviorSubject with the new search term
+  }
   // fetch items by department
+  /**
+   * Filters artisans by department.
+   * @param department - The department to filter artisans by
+   * @returns Array of artisans belonging to the specified department
+   */
   getItemByDepartment(department: string): Artisan[] {
     const filteredItems = this.items.filter(
       (item) => item.department.toLowerCase() === department.toLowerCase()
@@ -171,25 +191,47 @@ export class ArtisanDataService {
     return filteredItems;
   }
 
-  // Fetch items for a specific page
-  getItemsByPage(page: number) {
-    if (page < 1) {
-      //Ensure valid input for methods like getItemsByPage (e.g., page > 0).
-      console.error('Invalid page number');
-      return [];
+  // // Fetch items for a specific page
+  // getItemsByPage(page: number) {
+  //   if (page < 1) {
+  //     //Ensure valid input for methods like getItemsByPage (e.g., page > 0).
+  //     console.error('Invalid page number');
+  //     return [];
+  //   }
+  //   const itemsPerPage = 4; // Number of items per page
+  //   const startIndex = (page - 1) * itemsPerPage; // Calculate the starting index
+  //   return this.items.slice(startIndex, startIndex + itemsPerPage); // Return the items for the requested page
+  // }
+
+  // // Fetch an item by its index
+  // getItemByIndex(index: number) {
+  //   if (index < 0 || index >= this.items.length) {
+  //     console.error('Index out of range'); // error handling for cases where a department or index might not exist
+  //     return undefined;
+  //   }
+  //   return this.items[index];
+  // }
+
+  // new method to search artisans by name,specialty, or location
+  /**
+   * Searches for artisans by name, specialty, or location.
+   * @param searchTerm - The term entered by the user for searching
+   * @returns Array of artisans that match the search criteria
+   */
+  searchArtisans(searchTerm: string): Artisan[] {
+    if (!searchTerm.trim()) {
+      return []; // return an empty array if the search term is empty
     }
-    const itemsPerPage = 4; // Number of items per page
-    const startIndex = (page - 1) * itemsPerPage; // Calculate the starting index
-    return this.items.slice(startIndex, startIndex + itemsPerPage); // Return the items for the requested page
+
+    const lowercasedSearchTerm = searchTerm.toLowerCase(); // Convert search term to lowercase for case-insensitive search
+    return this.items.filter(
+      // Check if the artisan's name, specialty, or location includes the search term (case-insensitive)
+      (artisan) =>
+        artisan.nom.toLowerCase().includes(lowercasedSearchTerm) ||
+        artisan.specialite.toLowerCase().includes(lowercasedSearchTerm) ||
+        artisan.localisation.toLowerCase().includes(lowercasedSearchTerm)
+    );
   }
 
-  // Fetch an item by its index
-  getItemByIndex(index: number) {
-    if (index < 0 || index >= this.items.length) {
-      console.error('Index out of range'); // error handling for cases where a department or index might not exist
-      return undefined;
-    }
-    return this.items[index];
-  }
   constructor() {}
 }

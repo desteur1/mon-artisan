@@ -31,14 +31,18 @@ export class FicheDetailArtisantComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //get the index from the route parameters
-    const indexParam = this.route.snapshot.paramMap.get('index');
-    if (indexParam) {
-      this.index = Number(indexParam); // convert the string index to a number
-      //fetch the specific item by its index
-      this.item = this.artisanService.getItemByIndex(this.index); // get the artisan by index
+    // Retrieve the 'nom' parameter from the route
+    const nomParam = this.route.snapshot.paramMap.get('nom');
+    if (nomParam) {
+      // Find the artisan that matches the retrieved 'nom' parameter
+      this.item = this.artisanService
+        .getItems()
+        .find((a) => a.nom === nomParam);
+      // Debugging: Log the found item
+      console.log('Found Artisan:', this.item);
     } else {
-      console.error('No index found in route parameters');
+      // Log an error if no 'nom' parameter is found in the route
+      console.error('No artisan found in route parameters');
     }
   }
   // Navigate back to the previous page using the Location service

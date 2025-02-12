@@ -9,15 +9,18 @@
         <form class="d-flex d-sm-none" role="search">
           <!-- d-none Hides the search bar by default on small screens,d-sm-inline d-md-inline and d-lg-inline Makes the search bar visible on small,medium and  larger screens, it is only invisible on extra small screen-->
           <input
+            [(ngModel)]="searchInput"
             class="form-control me-2 d-none d-sm-inline d-md-inline d-lg-inline"
             type="search"
             placeholder="Search"
             aria-label="Search"
+            name="searchTerm"
           /><!--the toggleSearch() toggle the second form from visible to invisible on extra small screen-->
           <button
             class="btn btn-outline-success"
             type="button"
             (click)="toggleSearch()"
+            (click)="onSearchClick()"
             arial-label="Toggle search input"
           >
             <img
@@ -74,12 +77,18 @@
         <!--d-none d-md-flex hides it on small screens, but d-flex shows it when isSearchVisible is true) hence both and the one have the same output -->
         <!-- d-none makes it invisible on all screen and d-sm-flex makes it invisble on extra small screen and visible starting from small to large   -->
         <input
+          [(ngModel)]="searchInput"
           class="form-control me-2 w-50"
           type="search"
           placeholder="Search"
           aria-label="Search"
+          name="searchTerm"
         />
-        <button class="btn btn-outline-success" type="submit">
+        <button
+          class="btn btn-outline-success"
+          (click)="onSearchClick()"
+          type="submit"
+        >
           <img
             src="/images/search-blue.png"
             class="search-globe"
