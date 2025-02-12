@@ -6,6 +6,11 @@ import { FabricationComponent } from './fabrication/fabrication.component';
 import { ServiceCardComponentComponent } from './service-card-component/service-card-component.component';
 import { FicheDetailArtisantComponent } from './fiche-detail-artisant/fiche-detail-artisant.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { MentionLegaleComponent } from './components/mention-legale/mention-legale.component';
+import { DonneesPersonnelleComponent } from './components/donnees-personnelle/donnees-personnelle.component';
+import { CookiesComponent } from './components/cookies/cookies.component';
+import { AccesibiliteComponent } from './components/accesibilite/accesibilite.component';
+import { UnknownPageComponent } from './unknown-page/unknown-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,4 +23,9 @@ export const routes: Routes = [
     path: 'fiche-detail-artisan/:nom',
     component: FicheDetailArtisantComponent,
   },
+  { path: 'mention-legale', component: MentionLegaleComponent },
+  { path: 'cookies', component: CookiesComponent },
+  { path: 'accessibilite', component: AccesibiliteComponent },
+  { path: 'donnees-personnelle', component: DonneesPersonnelleComponent },
+  { path: '**', component: UnknownPageComponent },
 ];

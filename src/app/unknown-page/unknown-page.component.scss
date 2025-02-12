@@ -1,0 +1,13 @@
+img {
+  max-width: 100%;
+  width: 400px;
+}
+.custom-img {
+  margin: 0 auto;
+}
+@media (max-width: 576px) {
+  div {
+    margin-bottom: 8rem !important;
+    margin-top: 7rem !important;
+  }
+}
