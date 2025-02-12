@@ -1,0 +1,11 @@
+p {
+  margin-bottom: 11rem;
+  margin-top: 10rem;
+  font-size: 3rem;
+}
+
+@media (max-width: 576px) {
+  p {
+    margin-bottom: 24rem;
+  }
+}
