@@ -19,7 +19,7 @@ export class ArtisanDataService {
     },
     {
       nom: 'Moreau',
-      note: 4.8,
+      note: 4.3,
       specialite: 'Menuiserie',
       localisation: "L'Ile-sur-la-Sorgue",
       department: 'Batiment',
@@ -48,7 +48,7 @@ export class ArtisanDataService {
     // Service category
     {
       nom: 'Michel',
-      note: 4.4,
+      note: 4.6,
       specialite: 'Décoration',
       localisation: 'Montpellier',
       department: 'Service',
@@ -58,7 +58,7 @@ export class ArtisanDataService {
     {
       nom: 'Roux',
       note: 3.7,
-      specialite: 'Ébénisterie',
+      specialite: 'Fleuriste',
       localisation: 'Les Beaux de Provence',
       department: 'Service',
       aboutMe:
@@ -67,7 +67,7 @@ export class ArtisanDataService {
     {
       nom: 'Lambert',
       note: 3.8,
-      specialite: 'Cordonnerie',
+      specialite: 'Coiffure',
       localisation: 'Toulon',
       department: 'Service',
       aboutMe: 'Cordonner passionné, je répare et personnalise vos chaussures.',
@@ -75,7 +75,7 @@ export class ArtisanDataService {
     {
       nom: 'David',
       note: 4.0,
-      specialite: 'Couture',
+      specialite: 'Ménage',
       localisation: 'Saint-Paul de Vence',
       department: 'Service',
       aboutMe:
@@ -86,7 +86,7 @@ export class ArtisanDataService {
     {
       nom: 'Petit',
       note: 3.8,
-      specialite: 'Jardinage',
+      specialite: 'Torrefacteur',
       localisation: 'Saint-Rémy-de-Provence',
       department: 'Alimentation',
       aboutMe:
@@ -104,7 +104,7 @@ export class ArtisanDataService {
     {
       nom: 'Simon',
       note: 4.9,
-      specialite: 'Vitraillerie',
+      specialite: 'épicier',
       localisation: 'Avignon',
       department: 'Alimentation',
       aboutMe:
@@ -113,7 +113,7 @@ export class ArtisanDataService {
     {
       nom: 'Laurent',
       note: 4.7,
-      specialite: 'Cuisine',
+      specialite: 'Traiteur',
       localisation: 'Saint-Tropez',
       department: 'Alimentation',
       aboutMe:
@@ -124,7 +124,7 @@ export class ArtisanDataService {
     {
       nom: 'Robert',
       note: 4.2,
-      specialite: 'Serrurerie',
+      specialite: 'Textile',
       localisation: 'Antibes',
       department: 'Fabrication',
       aboutMe:
@@ -133,7 +133,7 @@ export class ArtisanDataService {
     {
       nom: 'Alain',
       note: 3.6,
-      specialite: 'Carrelage',
+      specialite: 'Meuble',
       localisation: 'Roussillon',
       department: 'Fabrication',
       aboutMe:
@@ -142,7 +142,7 @@ export class ArtisanDataService {
     {
       nom: 'Dubois',
       note: 4.1,
-      specialite: 'Peinture',
+      specialite: 'Jouets',
       localisation: 'Uzès',
       department: 'Fabrication',
       aboutMe:
@@ -151,13 +151,47 @@ export class ArtisanDataService {
     {
       nom: 'Thomas',
       note: 3.9,
-      specialite: 'Mécanique',
+      specialite: 'Bijoux',
       localisation: 'Toulouse',
       department: 'Fabrication',
       aboutMe:
         'Mécanicien passionné, je répare et optimise toutes sortes de machines.',
     },
   ];
+
+  // ✅ Define synonyms for search terms
+  private synonymMap: { [key: string]: string[] } = {
+    plomberie: ['plombier', 'chauffagiste', 'installation sanitaire'],
+    menuiserie: ['ébéniste', 'menuisier', 'bois'],
+    electricité: ['électricien', 'câblage', 'courant'],
+    maçonnerie: ['maçon', 'construction', 'bâtiment'],
+    décoration: ['décorateur', 'designer', 'aménagement'],
+    fleuriste: [
+      'fleurs',
+      'plantes',
+      'botanique',
+      'bouquet',
+      'jardinier',
+      'horticulteur',
+    ],
+    coiffure: [
+      'coiffeur',
+      'coiffeuse',
+      'salon',
+      'hairdresser',
+      'barbier',
+      'coupe',
+    ],
+    ménage: ['nettoyage', 'entretien', 'aide ménagère'],
+    torrefacteur: ['café', 'grains', 'brûlerie'],
+    boulangerie: ['boulanger', 'pâtissier', 'pain', 'viennoiserie'],
+    épicier: ['épices', 'herboriste'],
+    traiteur: ['chef', 'cuisinier', 'cuisine', 'buffet'],
+    textile: ['couture', 'tissu', 'mode', 'vêtement'],
+    meuble: ['ébéniste', 'menuiserie', 'mobilier', 'bois'],
+    jouets: ['artisan jouets', 'fabrication jouets', 'bois', 'création'],
+    bijoux: ['bijoutier', 'joaillier', 'or', 'argent'],
+  };
   // BehaviorSubject to store the search term (used for reactive search functionality)
   private searchTerm = new BehaviorSubject<string>(''); // Stores search input
   searchTerm$ = this.searchTerm.asObservable(); // Expose as observable
@@ -187,30 +221,9 @@ export class ArtisanDataService {
     const filteredItems = this.items.filter(
       (item) => item.department.toLowerCase() === department.toLowerCase()
     );
-    console.log(`Items found for department "${department}":`, filteredItems);
+    // console.log(`Items found for department "${department}":`, filteredItems);
     return filteredItems;
   }
-
-  // // Fetch items for a specific page
-  // getItemsByPage(page: number) {
-  //   if (page < 1) {
-  //     //Ensure valid input for methods like getItemsByPage (e.g., page > 0).
-  //     console.error('Invalid page number');
-  //     return [];
-  //   }
-  //   const itemsPerPage = 4; // Number of items per page
-  //   const startIndex = (page - 1) * itemsPerPage; // Calculate the starting index
-  //   return this.items.slice(startIndex, startIndex + itemsPerPage); // Return the items for the requested page
-  // }
-
-  // // Fetch an item by its index
-  // getItemByIndex(index: number) {
-  //   if (index < 0 || index >= this.items.length) {
-  //     console.error('Index out of range'); // error handling for cases where a department or index might not exist
-  //     return undefined;
-  //   }
-  //   return this.items[index];
-  // }
 
   // new method to search artisans by name,specialty, or location
   /**
@@ -219,18 +232,57 @@ export class ArtisanDataService {
    * @returns Array of artisans that match the search criteria
    */
   searchArtisans(searchTerm: string): Artisan[] {
+    //This is a method that takes a searchTerm (user input) and returns an array of Artisan objects that match the search.
+
     if (!searchTerm.trim()) {
+      //If the user enters an empty search (like " "), we return nothing to avoid unnecessary filtering.
       return []; // return an empty array if the search term is empty
     }
+    // This makes the search case-insensitive (so "Plombier" and "plombier" are treated the same).
+    //.trim() removes extra spaces from the beginning and end.
+    const lowercasedSearchTerm = searchTerm.trim().toLowerCase(); // Convert search term to lowercase for case-insensitive search
 
-    const lowercasedSearchTerm = searchTerm.toLowerCase(); // Convert search term to lowercase for case-insensitive search
-    return this.items.filter(
-      // Check if the artisan's name, specialty, or location includes the search term (case-insensitive)
-      (artisan) =>
-        artisan.nom.toLowerCase().includes(lowercasedSearchTerm) ||
-        artisan.specialite.toLowerCase().includes(lowercasedSearchTerm) ||
-        artisan.localisation.toLowerCase().includes(lowercasedSearchTerm)
-    );
+    //We use .filter() to loop through all artisans and keep only those that match.
+    return this.items.filter((artisan) => {
+      //We convert each artisan’s name, location, and specialty to lowercase.
+      const name = artisan.nom.toLowerCase();
+      const location = artisan.localisation.toLowerCase();
+      const specialty = artisan.specialite.toLowerCase();
+
+      // ✅ Direct match check (for name, location, or specialty)
+      const directMatch =
+        /* This checks if the search term exists inside:
+The artisan's name
+The artisan's location
+The artisan's specialty
+ */
+        name.includes(lowercasedSearchTerm) ||
+        location.includes(lowercasedSearchTerm) ||
+        specialty.includes(lowercasedSearchTerm);
+
+      // ✅ Synonym match check
+      // this.synonymMap is a dictionary of synonyms,
+      // Object.entries(this.synonymMap) converts it into an array
+      //  The .some() function loops through each entry (key-value pair) to check if the search term matches a synonym.
+      // Compare Search Term with Synonyms
+      const synonymMatch = Object.entries(this.synonymMap).some(
+        ([key, synonyms]) => {
+          // const lowerKey = key.toLowerCase();
+          // const lowerSynonyms = synonyms.map((syn) => syn.toLowerCase());
+          return (
+            (specialty.includes(key) &&
+              synonyms.includes(lowercasedSearchTerm)) ||
+            (synonyms.includes(specialty) && key.includes(lowercasedSearchTerm))
+            // (specialty === lowerKey &&
+            //   lowerSynonyms.includes(lowercasedSearchTerm)) ||
+            // (lowerSynonyms.includes(specialty) &&
+            //   lowerKey === lowercasedSearchTerm)
+          );
+        }
+      );
+
+      return directMatch || synonymMatch;
+    });
   }
 
   constructor() {}

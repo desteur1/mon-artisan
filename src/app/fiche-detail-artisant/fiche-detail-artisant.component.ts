@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FicheDetailArtisantComponent implements OnInit {
   item: Artisan | undefined; //to hold artisan details
-  index: number | undefined; // to hold the index of the artisan
+  // index: number | undefined; // to hold the index of the artisan
 
   contact = {
     name: '',
@@ -39,7 +39,7 @@ export class FicheDetailArtisantComponent implements OnInit {
         .getItems()
         .find((a) => a.nom === nomParam);
       // Debugging: Log the found item
-      console.log('Found Artisan:', this.item);
+      // console.log('Found Artisan:', this.item);
     } else {
       // Log an error if no 'nom' parameter is found in the route
       console.error('No artisan found in route parameters');

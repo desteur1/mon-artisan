@@ -27,7 +27,7 @@ export class FabricationComponent implements OnInit, OnDestroy {
 
     this.fabricationItems =
       this.artisanDataService.getItemByDepartment('Fabrication');
-    console.log('Fetched Fabrication Items:', this.fabricationItems); // Debug log to check fetched items
+    // console.log('Fetched Fabrication Items:', this.fabricationItems); // Debug log to check fetched items
 
     // ✅ Subscribe to searchTerm$ and filter items dynamically
     this.searchSubscription = this.artisanDataService.searchTerm$.subscribe(

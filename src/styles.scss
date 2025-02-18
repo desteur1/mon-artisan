@@ -1,5 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-.card {
-  border: none !important;
+// .card {
+//   border: none !important;
+// }
+
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("assets/fonts/Graphik-Black-Trial.woff") format("woff"),
+    url("assets/fonts/Graphik-Bold-Trial.woff") format("woff");
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "MyCustomFont", sans-serif !important;
 }

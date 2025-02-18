@@ -1,15 +1,15 @@
 <!-- Check if 'item' exists before rendering the details section -->
 <section *ngIf="item" class="mx-4">
-  <h1 class="text-center my-4">Details for {{ item.nom }}</h1>
+  <h1 class="text-center my-4">Fiche Artisan {{ item.nom }}</h1>
   <!-- Display the artisan's details using the Itemcard component -->
   <app-itemcard
     [item]="item"
-    [index]="index !== undefined ? index : -1"
     [customStyle]="{
       'background-color': '#0074c7',
       border: 'none',
       color: '#f1f8fc'
     }"
+    class="text-center"
   ></app-itemcard>
   <div>
     <h2 class="text-center my-4">A propos</h2>
@@ -79,13 +79,11 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-success">Envoyer</button>
+      <button type="submit" class="btn btn-envoi">Envoyer</button>
     </form>
   </div>
   <!-- Button to navigate back to the main page -->
-  <button (click)="goBack()" class="btn btn-primary my-4 btn-return">
-    Retour
-  </button>
+  <button (click)="goBack()" class="btn my-4 btn-return">Retour</button>
 </section>
 
 <!-- A fallback text is a default message that appears when the expected content is missing, empty, or unavailable.-->

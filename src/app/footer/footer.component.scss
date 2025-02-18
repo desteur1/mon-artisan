@@ -7,7 +7,19 @@ span {
 }
 a {
   text-decoration: none;
+  color: #f1f8fc;
+}
+a:hover {
+  color: #0074c7;
 }
 ul {
   list-style: none;
+}
+@media (max-width: 576px) {
+  address {
+    font-size: 0.8rem;
+  }
+  ul {
+    font-size: 0.8rem;
+  }
 }

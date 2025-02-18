@@ -24,7 +24,7 @@ export class ServiceCardComponentComponent {
     //fetch items for the service department
 
     this.serviceItems = this.artisanDataService.getItemByDepartment('Service');
-    console.log('Fetched Fabrication Items:', this.serviceItems);
+    // console.log('Fetched Fabrication Items:', this.serviceItems);
     if (this.serviceItems.length > 0) {
       console.log('✅ serviceItems is populated');
     } else {
