@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class AlimentationComponent {
   searchTerm: string = ''; // Store the search term
   searchInput: string = ''; // stores the input field value
-  title = signal('Artisans Alimentaion'); // signal() is the new method of binding data
+  title = signal('Artisans Alimentation'); // signal() is the new method of binding data
   alimentationItems: Artisan[] = []; // property to hold the fetch items
   searchSubscription!: Subscription;
 
@@ -25,7 +25,7 @@ export class AlimentationComponent {
 
     this.alimentationItems =
       this.artisanDataService.getItemByDepartment('Alimentation');
-    console.log('Fetched Fabrication Items:', this.alimentationItems);
+    // console.log('Fetched Fabrication Items:', this.alimentationItems);
 
     // ✅ Subscribe to searchTerm$ and filter items dynamically
     this.searchSubscription = this.artisanDataService.searchTerm$.subscribe(

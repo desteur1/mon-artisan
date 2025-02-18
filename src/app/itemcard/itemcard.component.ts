@@ -25,7 +25,7 @@ export class ItemcardComponent {
       console.warn('ItemCardComponent initialized without an item.'); // Warn if `item` is missing
     }
     // Debugging: Check if index is received
-    console.log('Received Item:', this.item);
+    // console.log('Received Item:', this.item);
 
     // Calculates full and half stars based on the artisan's rating
     this.fullstars = this.getFullStars(this.item.note);
@@ -53,7 +53,7 @@ export class ItemcardComponent {
   goToDetails() {
     if (this.item && this.item.nom) {
       // Ensure item and nom are defined
-      console.log('Navigating to details for:', this.item.nom); // Debugging: Log navigation info
+      // console.log('Navigating to details for:', this.item.nom); // Debugging: Log navigation info
       // if (Number.isInteger(this.item.nom) && this.index >= 0)
 
       this.router.navigate(['/fiche-detail-artisan', this.item.nom]); // Navigate using `nom`

@@ -1,20 +1,14 @@
-<main class="mb-5">
-  <h1 class="text-center my-5">Search Results for "{{ searchTerm }}"</h1>
-  <!-- Return Button -->
-  <div class="text-center mb-4">
-    <button class="btn btn-primary" (click)="goBack()">
-      Return to Previous Page
-    </button>
-  </div>
+<main class="mb-5 bg-color">
+  <h1 class="text-center my-5">Artisan "{{ searchTerm }}"</h1>
 
-  <div class="image-container" *ngIf="searchResults.length === 0">
+  <div class="image-container text-center" *ngIf="searchResults.length === 0">
     <img
-      src="/images/number-four.png"
+      src="/images/error.jpeg"
       alt="No results found"
       class="no-results-image"
     />
-    <div class="no-results-message">
-      <p>No artisans found for your search!</p>
+    <div class="no-results-message text-center">
+      <p>Pas d'artisans trouvé pour votre recherche !</p>
     </div>
   </div>
 
@@ -30,4 +24,8 @@
       <app-itemcard [item]="artisan"></app-itemcard>
     </div>
   </section>
+  <!-- Return Button -->
+  <div class="text-end mb-4 p-4">
+    <button class="btn btn-light" (click)="goBack()">page précedente</button>
+  </div>
 </main>

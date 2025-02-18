@@ -1,0 +1,16 @@
+.bg-color {
+  background: #0074c7;
+}
+.card {
+  opacity: 0.9;
+}
+.card:hover {
+  opacity: 1;
+}
+
+@media (max-width: 576px) {
+  .bg-color {
+    margin-bottom: 10rem !important;
+    margin-top: 8.7rem !important;
+  }
+}

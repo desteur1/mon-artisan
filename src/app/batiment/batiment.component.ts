@@ -25,7 +25,7 @@ export class BatimentComponent {
 
     this.batimentItems =
       this.artisanDataService.getItemByDepartment('Batiment');
-    console.log('Fetched Fabrication Items:', this.batimentItems);
+    // console.log('Fetched Fabrication Items:', this.batimentItems);
     // ✅ Subscribe to searchTerm$ and filter items dynamically
     this.searchSubscription = this.artisanDataService.searchTerm$.subscribe(
       (searchTerm) => {

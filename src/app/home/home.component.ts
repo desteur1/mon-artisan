@@ -28,13 +28,13 @@ export class HomeComponent {
   ngOnInit(): void {
     // Get all artisans from the service
     this.artisans = this.artisanDataService.getItems();
-    console.log('Artisans fetched:', this.artisans); // Debug fetched data
+    // console.log('Artisans fetched:', this.artisans); // Debug fetched data
 
     // Sort by note (highest first) and select the top 3
     this.employeeOfTheMonth = [...this.artisans]
       .sort((a, b) => b.note - a.note) // Sort by note in descending order
       .slice(0, 3); // Take the top 3 artisans
-    console.log('Employee of the month:', this.employeeOfTheMonth); // Debug employee list
+    // console.log('Employee of the month:', this.employeeOfTheMonth); // Debug employee list
   }
   onSearchClick(): void {
     const searchTerm = this.searchInput.trim();

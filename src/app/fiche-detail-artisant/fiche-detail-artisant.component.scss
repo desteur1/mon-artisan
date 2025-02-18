@@ -23,8 +23,13 @@ label {
   height: 100%;
   cursor: text;
 }
+.btn-envoi {
+  background: #82b864;
+}
 .btn-return {
   // position the button to the right
   margin-left: auto;
   display: block;
+  background: #00497c;
+  color: #f1f8fc;
 }
