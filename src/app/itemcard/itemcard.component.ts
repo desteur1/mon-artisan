@@ -52,9 +52,9 @@ export class ItemcardComponent {
   //navigate to item details
   goToDetails() {
     if (this.item && this.item.nom) {
-      // Ensure item and nom are defined
-      // console.log('Navigating to details for:', this.item.nom); // Debugging: Log navigation info
-      // if (Number.isInteger(this.item.nom) && this.index >= 0)
+      /* Ensure item and nom are defined
+       console.log('Navigating to details for:', this.item.nom); // Debugging: Log navigation info
+       if (Number.isInteger(this.item.nom) && this.index >= 0)*/
 
       this.router.navigate(['/fiche-detail-artisan', this.item.nom]); // Navigate using `nom`
     } else {

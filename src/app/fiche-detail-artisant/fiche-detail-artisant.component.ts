@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common'; // Import Location service to handle back navigation
 import { CommonModule } from '@angular/common'; // Import CommonModule for Angular directives like *ngIf and *ngFor
 import { FormsModule } from '@angular/forms'; //Syncs data between the form input and the component variable automatically (Enables Two-Way Data Binding).
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Artisan } from '../models/artisan.model';
 import { ArtisanDataService } from '../artisan-data.service';
@@ -23,11 +24,13 @@ export class FicheDetailArtisantComponent implements OnInit {
     subject: '',
     message: '',
   };
+  sanitizedAboutMe: SafeHtml | undefined; // Variable to hold sanitized HTML
 
   constructor(
     private route: ActivatedRoute, // to capture the route params
     private artisanService: ArtisanDataService, // to fetch artisan data
-    private location: Location //inject the location service
+    private location: Location, //inject the location service
+    private sanitizer: DomSanitizer // Inject DomSanitizer to sanitize HTML
   ) {}
 
   ngOnInit(): void {
@@ -38,8 +41,15 @@ export class FicheDetailArtisantComponent implements OnInit {
       this.item = this.artisanService
         .getItems()
         .find((a) => a.nom === nomParam);
+      // Sanitize the "aboutMe" field to prevent XSS attacks
+      if (this.item) {
+        this.sanitizedAboutMe = this.sanitizer.bypassSecurityTrustHtml(
+          this.item.aboutMe
+        );
+      }
+
       // Debugging: Log the found item
-      // console.log('Found Artisan:', this.item);
+      console.log('Found Artisan:', this.item);
     } else {
       // Log an error if no 'nom' parameter is found in the route
       console.error('No artisan found in route parameters');
