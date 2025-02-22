@@ -1,4 +1,4 @@
-# MonArtisan
+<!-- # MonArtisan
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
 
@@ -56,4 +56,72 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 ## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page. -->
+
+# MonArtisan
+
+MonArtisan est une application web basée sur Angular qui aide les utilisateurs à trouver et explorer des artisans locaux. L'application permet de rechercher des artisans, de visualiser leurs détails et de consulter les artisans les mieux notés.
+
+Ce projet a été généré en utilisant la [CLI Angular](https://github.com/angular/angular-cli) version 19.1.4.
+
+## Fonctionnalités
+
+- **Affichage des artisans** : Affiche les artisans by department.
+- **Recherche dynamique** : Permet de rechercher des artisans par nom, spécialité et localisation.Les résultats sont filtrés en temps réel en fonction du terme de recherche et sont affichés sur la page de résultats(search-result)
+- **Artisan du mois** : Affiche les trois artisans les mieux notés.
+- **Page 404** : Si un utilisateur accède à une page inexistante, il est redirigé vers une page d'erreur.
+- **Détails des artisans** : Permet de voir les détails d'un artisan sur une page dédiée.
+
+## Installation
+
+### Prérequis
+
+Avant de commencer, assurez-vous d'avoir les outils suivants installés :
+
+- **Node.js** (version 14.x ou supérieure)
+- **Angular CLI** (version 19.1.4 ou supérieure)
+
+### Cloner le dépôt
+
+Clonez le projet depuis GitHub en exécutant la commande suivante dans votre terminal :
+
+```bash
+git clone https://github.com/desteur1/mon-artisan.git
+cd mon-artisan
+```
+
+### Installer les dépendances
+
+npm install
+
+### Démarrer le serveur de développement
+
+ng serve
+
+### Scaffolding du code
+
+La CLI Angular inclut des outils puissants pour générer du code automatiquement. Pour générer un nouveau composant, exécutez :
+
+```
+ng generate component nom-du-composant
+
+```
+
+Pour une liste complète des schémas disponibles (comme composants, directives, ou pipes), exécutez :
+
+```
+ng generate --help
+
+```
+
+### Construction du projet
+
+ng build
+
+### Exécution des tests unitaires
+
+ng test
+
+### Tests de bout en bout (e2e)
+
+ng e2e
