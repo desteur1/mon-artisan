@@ -125,3 +125,9 @@ ng test
 ### Tests de bout en bout (e2e)
 
 ng e2e
+
+### Sécurisation des Données Utilisateur
+
+- Dans le cadre de l'application MonArtisan, nous avons mis en place une protection contre les attaques de type Cross-Site Scripting (XSS). Cela concerne spécifiquement l'affichage de contenu généré par l'utilisateur, comme les descriptions des artisans. Pour assurer la sécurité des données, nous utilisons le service DomSanitizer d'Angular, qui permet de nettoyer et sécuriser le contenu HTML avant de l'afficher dans l'application.
+
+- Lorsqu'un utilisateur effectue une recherche, le terme de recherche est sanitisé avant d'être utilisé. Cela permet d'éliminer les caractères potentiellement dangereux, comme les balises HTML (<, >, &), qui pourraient être utilisés pour injecter du code malveillant.

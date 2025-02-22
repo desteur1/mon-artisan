@@ -13,10 +13,13 @@
   ></app-itemcard>
   <div>
     <h2 class="text-center my-4">A propos</h2>
-    <!-- Display 'aboutMe' text if available; otherwise, show fallback text -->
-    <p *ngIf="item.aboutMe; else noAboutMe" class="text-center">
-      {{ item.aboutMe }}
-    </p>
+    <!-- Display sanitized 'aboutMe' content if available; otherwise, show fallback text -->
+    <div
+      *ngIf="sanitizedAboutMe; else noAboutMe"
+      class="text-center"
+      [innerHTML]="sanitizedAboutMe"
+    ></div>
+
     <!-- Fallback template if 'aboutMe' is empty or undefined -->
     <ng-template #noAboutMe>
       <p class="text-center">Aucune description disponible.</p>

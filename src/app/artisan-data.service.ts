@@ -210,7 +210,11 @@ export class ArtisanDataService {
    * @param term - The search term entered by the user
    */
   updateSearchTerm(term: string): void {
-    this.searchTerm.next(term); // Updates the BehaviorSubject with the new search term
+    // Sanitize the input: remove potentially dangerous characters like <, >, and &
+    const sanitizedTerm = term
+      .replace(/[<>&]/g, '') // Removes <, >, and & characters
+      .trim(); // Remove leading and trailing whitespace
+    this.searchTerm.next(sanitizedTerm); // Updates the BehaviorSubject with the new sanitized search term
   }
   // fetch items by department
   /**
@@ -226,7 +230,6 @@ export class ArtisanDataService {
     return filteredItems;
   }
 
-  // new method to search artisans by name,specialty, or location
   /**
    * Searches for artisans by name, specialty, or location.
    * @param searchTerm - The term entered by the user for searching
@@ -239,8 +242,8 @@ export class ArtisanDataService {
       //If the user enters an empty search (like " "), we return nothing to avoid unnecessary filtering.
       return []; // return an empty array if the search term is empty
     }
-    // This makes the search case-insensitive (so "Plombier" and "plombier" are treated the same).
-    //.trim() removes extra spaces from the beginning and end.
+    /* This makes the search case-insensitive (so "Plombier" and "plombier" are treated the same).
+    //.trim() removes extra spaces from the beginning and end.*/
     const lowercasedSearchTerm = searchTerm.trim().toLowerCase(); // Convert search term to lowercase for case-insensitive search
 
     //We use .filter() to loop through all artisans and keep only those that match.
@@ -253,10 +256,11 @@ export class ArtisanDataService {
       // ✅ Direct match check (for name, location, or specialty)
       const directMatch =
         /* This checks if the search term exists inside:
-The artisan's name
-The artisan's location
-The artisan's specialty
- */
+        The artisan's name
+        The artisan's location
+        The artisan's specialty
+       */
+
         name.includes(lowercasedSearchTerm) ||
         location.includes(lowercasedSearchTerm) ||
         specialty.includes(lowercasedSearchTerm);
@@ -274,10 +278,6 @@ The artisan's specialty
             (specialty.includes(key) &&
               synonyms.includes(lowercasedSearchTerm)) ||
             (synonyms.includes(specialty) && key.includes(lowercasedSearchTerm))
-            // (specialty === lowerKey &&
-            //   lowerSynonyms.includes(lowercasedSearchTerm)) ||
-            // (lowerSynonyms.includes(specialty) &&
-            //   lowerKey === lowercasedSearchTerm)
           );
         }
       );
