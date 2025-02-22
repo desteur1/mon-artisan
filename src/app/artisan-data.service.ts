@@ -62,7 +62,7 @@ export class ArtisanDataService {
       localisation: 'Les Beaux de Provence',
       department: 'Service',
       aboutMe:
-        'Artisan ébéniste, je crée des meubles sur mesure et restaure les anciens.',
+        'Créatrice florale, je compose des bouquets unique et des arrangements élégants.',
     },
     {
       nom: 'Lambert',
@@ -70,7 +70,8 @@ export class ArtisanDataService {
       specialite: 'Coiffure',
       localisation: 'Toulon',
       department: 'Service',
-      aboutMe: 'Cordonner passionné, je répare et personnalise vos chaussures.',
+      aboutMe:
+        'Coiffeur passionné, je crée des coupes et styles personnalisés pour tous.',
     },
     {
       nom: 'David',
@@ -79,7 +80,7 @@ export class ArtisanDataService {
       localisation: 'Saint-Paul de Vence',
       department: 'Service',
       aboutMe:
-        'Je confectionne des vêtements sur mesure et effectue des retouches.',
+        'Spécialiste du ménage, je vous offre unn service de nettoyage impeccable.',
     },
 
     // Alimentation category
@@ -90,7 +91,7 @@ export class ArtisanDataService {
       localisation: 'Saint-Rémy-de-Provence',
       department: 'Alimentation',
       aboutMe:
-        'Jardinier passionné, je privilégie des méthodes biologiques et durables.',
+        "Torréfacteur artisanal, je sélectionne et grille des cafés d'exception.",
     },
     {
       nom: 'Durand',
@@ -104,11 +105,11 @@ export class ArtisanDataService {
     {
       nom: 'Simon',
       note: 4.9,
-      specialite: 'épicier',
+      specialite: 'Épicier',
       localisation: 'Avignon',
       department: 'Alimentation',
       aboutMe:
-        'Artisan vitrailliste, je conçois et restaure des vitraux d’exception.',
+        'Épicier passionné, je propose des produits frais et locaux chaque jour.',
     },
     {
       nom: 'Laurent',
@@ -128,7 +129,7 @@ export class ArtisanDataService {
       localisation: 'Antibes',
       department: 'Fabrication',
       aboutMe:
-        'Serrurier depuis 15 ans, je propose des solutions de sécurité efficaces.',
+        'Artisan textile, je crée des vêtements et accessoires uniques faits main.',
     },
     {
       nom: 'Alain',
@@ -137,7 +138,7 @@ export class ArtisanDataService {
       localisation: 'Roussillon',
       department: 'Fabrication',
       aboutMe:
-        'Carreleur minutieux, j’assure des finitions précises et durables.',
+        'Menuisier expert, je conçois et fabrique des meubles sur mesure.',
     },
     {
       nom: 'Dubois',
@@ -146,7 +147,7 @@ export class ArtisanDataService {
       localisation: 'Uzès',
       department: 'Fabrication',
       aboutMe:
-        'Peintre en bâtiment, j’apporte couleur et modernité à vos espaces.',
+        "Créateur de jouets en bois, j'apporte joie et sécurité aux enfants.",
     },
     {
       nom: 'Thomas',
@@ -155,7 +156,7 @@ export class ArtisanDataService {
       localisation: 'Toulouse',
       department: 'Fabrication',
       aboutMe:
-        'Mécanicien passionné, je répare et optimise toutes sortes de machines.',
+        'Bijoutier artisan, je conçois des pièces uniques et personnalisées.',
     },
   ];
 
